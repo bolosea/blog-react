@@ -1,29 +1,38 @@
-const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+function resolve(dir) {
+  return path.join(__dirname, "..", dir);
+}
 module.exports = {
-  entry: './index.js',
+  entry: "./index.js",
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    path: resolve("dist"),
+    filename: "bundle.js"
+  },
+  resolve: {
+    extensions: [".js", ".json"],
+    alias: {
+      "@": resolve("src")
+    }
   },
   module: {
     rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: ['babel-loader']
+        use: ["babel-loader"]
       },
       {
         test: /\.(css|less)$/,
-        use: ['style-loader','css-loader','less-loader']
+        use: ["style-loader", "css-loader", "less-loader"]
       }
     ]
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'blog',
-      template: './template.html',
-      filename: 'index.html'
+      title: "blog",
+      template: "./template.html",
+      filename: "index.html"
     })
   ]
-}
+};
