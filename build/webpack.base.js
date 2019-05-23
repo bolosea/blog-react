@@ -6,8 +6,7 @@ function resolve(dir) {
 module.exports = {
   entry: "./index.js",
   output: {
-    path: resolve("dist"),
-    filename: "bundle.js"
+    publicPath: '/',
   },
   resolve: {
     extensions: [".js", ".json"],

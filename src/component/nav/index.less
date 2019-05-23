@@ -1,0 +1,35 @@
+.nav{
+  background-color: #4a4a4a;
+  color: #fff;
+  opacity: 0.9;
+  ul{
+    height: 52px;
+    display: flex;
+    li{
+      display: flex;
+      flex-direction: column;
+      margin-right: 1px;
+      width: 104px;
+      &.current{
+        background-color: #16a085;
+      }
+      &:hover{
+        background-color: #16a085;
+      }
+      &:hover .child{
+        background-color: #16a085;
+        display: block;
+      }
+      a{
+        text-align: center;
+        line-height: 52px;
+        &.child{
+          display: none;
+        }
+        &.child:hover{
+          background-color: #4a4a4a;
+        }
+      }
+    }
+  }
+}
