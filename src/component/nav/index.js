@@ -9,21 +9,17 @@ export default withRouter(
   class Nav extends Component {
     state = {
       menus: [],
-      currentActive: "/home"
+      currentActive: "/app/home"
     };
     async componentDidMount() {
       await this.fetchData();
       this.clickActice();
     }
     componentWillReceiveProps(nextProps){
-      console.log('willReceive',this.props,nextProps)
+      this.active(nextProps)
     }
     componentWillMount() {
-      let path = this.props.location.pathname;
-      console.log('path',path);
-      this.setState({
-        currentActive: path
-      });
+      this.active(this.props)
     }
     //获取所有导航菜单
     fetchData = async () => {
@@ -33,6 +29,13 @@ export default withRouter(
         menus: res.data.data
       });
     };
+    active = (props) => {
+      let path = props.location.pathname;
+      console.log('path',path);
+      this.setState({
+        currentActive: path
+      });
+    }
     clickActice = () => {
       let ul = document.querySelector(".nav ul");
       ul.addEventListener("click", function(e) {
@@ -61,15 +64,15 @@ export default withRouter(
           <ul>
             {this.state.menus.map(li => (
               <li
-                className={this.state.currentActive === li.url ? "current" : ""}
+                className={this.state.currentActive.includes('/app'+li.url) ? "current" : ""}
                 key={li.id}
               >
-                <Link to={li.url}>{li.name}</Link>
+                <Link to={'/app'+li.url}>{li.name}</Link>
                 {li.children &&
                   li.children.map(child => (
                     <Link
                       key={child.id}
-                      to={li.url + child.url}
+                      to={'/app'+li.url + child.url}
                       className="child"
                     >
                       {child.name}

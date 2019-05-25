@@ -2,14 +2,19 @@ import React from "react";
 import { Switch, Route, Redirect} from "react-router-dom";
 import Home from '@/pages/home'
 import Java from "@/pages/java";
+import NotMatch from "@/pages/notMatch";
 
-export default () => {
+
+export default ({match}) => {
+  console.log('match',match)
   return (
     <div className="content">
       <Switch>
-        <Route path="/home" component={Home} />
-        <Route path="/backend/java" component={Java} />
-        <Redirect to='/home'/>
+        <Route path="/app/home" component={Home} />
+        <Route path="/app/backend/java" component={Java} />
+        <Redirect from="/" to="/app/home" />
+        <Route component={NotMatch} />
+
       </Switch>
     </div>
   );
