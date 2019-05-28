@@ -12,9 +12,7 @@ export default class Home extends Component {
           <Card />
           <Card />
           <Card />
-          <Card />
-          <Card />
-          <Card />
+          
         </div>
         <div className="right">
           <Social />
