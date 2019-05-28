@@ -1,0 +1,53 @@
+.card{
+  padding: 15px;
+  background-color: #fff;
+  .title{
+    display: flex;
+    margin-bottom: 15px;
+    .type{
+      color: #fff;
+      background-color: #d9534f;
+      padding: 0 10px;
+      position: relative;
+      i{
+        position: absolute;
+        right: -10px;
+        top: 50%;
+        border: 5px solid #d9534f;
+        border-right: 5px solid transparent;
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        transform: translateY(-50%)
+      }
+    }
+    h3{
+      color: #00a67c;
+      font-size: 20px;
+    }
+  }
+  .info{
+    display: flex;
+    color: #777;
+    .ins{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin-left: 15px;
+    }
+    .note{
+      display: -webkit-box;
+      text-overflow: ellipsis; 
+      overflow : hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+    }
+    .icon{
+      align-self: flex-end;
+      span{
+        margin-left: 15px;
+      }
+    }
+  }
+}

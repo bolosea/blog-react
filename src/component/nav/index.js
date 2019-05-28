@@ -9,7 +9,7 @@ export default withRouter(
   class Nav extends Component {
     state = {
       menus: [],
-      currentActive: "/app/home"
+      currentActive: "/home"
     };
     async componentDidMount() {
       await this.fetchData();
@@ -32,6 +32,9 @@ export default withRouter(
     active = (props) => {
       let path = props.location.pathname;
       console.log('path',path);
+      if(path === '/'){
+        return 
+      }
       this.setState({
         currentActive: path
       });
@@ -45,34 +48,21 @@ export default withRouter(
         e.target.parentNode.classList.add("current");
       });
     };
-    // 以下方式弃用: 因为现在的li是动态渲染的
-    // active = () => {
-    //   let lis = document.querySelectorAll("li");
-    //   lis.forEach(li => {
-    //     li.addEventListener("click", () => {
-    //       console.log("click??");
-    //       lis.forEach(item => {
-    //         item.classList.remove("current");
-    //       });
-    //       li.classList.add("current");
-    //     });
-    //   });
-    // };
     render() {
       return (
         <div className="nav">
           <ul>
             {this.state.menus.map(li => (
               <li
-                className={this.state.currentActive.includes('/app'+li.url) ? "current" : ""}
+                className={this.state.currentActive.includes(li.url) ? "current" : ""}
                 key={li.id}
               >
-                <Link to={'/app'+li.url}>{li.name}</Link>
+                <Link to={li.url}>{li.name}</Link>
                 {li.children &&
                   li.children.map(child => (
                     <Link
                       key={child.id}
-                      to={'/app'+li.url + child.url}
+                      to={li.url + child.url}
                       className="child"
                     >
                       {child.name}

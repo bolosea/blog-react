@@ -1,0 +1,46 @@
+.social {
+  display: flex;
+  background-color: #fff;
+  justify-content: space-evenly;
+  a {
+    width: 45px;
+    height: 45px;
+    text-align: center;
+    line-height: 45px;
+    padding: 10px 6px;
+    background-color: #fff;
+    position: relative;
+    &:hover img {
+      display: block;
+    }
+    .wx,
+    .qq {
+      width: 123px;
+      height: 123px;
+      position: absolute;
+      top: 65px;
+      left: -35px;
+      display: none;
+    }
+    i {
+      display: block;
+      height: 100%;
+      font-size: 30px;
+      color: #fff;
+      border-radius: 5px;
+      background-color: yellowgreen;
+    }
+    .icon-weibo {
+      background: #f78585;
+    }
+    .icon-weixin {
+      background: #6fc299;
+    }
+    .icon-github-outline {
+      background: #eca3ac;
+    }
+    .icon-qq {
+      background: #e74c3c;
+    }
+  }
+}
